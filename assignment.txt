@@ -1,0 +1,71 @@
+Data Engineer Take-Home Project
+-------------------------------
+
+The 'voters/' directory contains a set of voter data for the following
+Florida counties:
+
+    - Alachua
+    - Orange
+    - Seminole
+
+The included Data Dictionary (DataDictionary.xlsx) includes a sheet for each
+file, describing that file's contents. In each data set, one row represents a
+registered voter, with columns for basic voter attributes (name, birthdate,
+party, etc.)
+
+Feel free to use any python packages you'd like, including those not in the
+standard library. You may include comments to explain your thought process
+along the way.
+
+
+1)  Write a python script to combine the voter data from all three counties
+    into a single CSV file with the following columns:
+
+        - regnum (the unique identifier)
+        - county
+        - first_name
+        - middle_name
+        - last_name
+        - party
+        - birthdate
+        - sex
+    
+    If any of the above columns are missing from a county's voter data, fill
+    the missing values with empty strings (''). The python script should create
+    a file called 'voters.csv' with the combined voter records from all three
+    counties.
+
+
+2)  Assume we have a single SQL table with the contents of the data generated
+    in step 1:
+
+    column      | type
+    ------------|-----
+    regnum      | text
+    first_name  | text
+    middle_name | text
+    last_name   | text
+    party       | text
+    birthdate   | date
+    sex         | text
+
+
+    Write a SQL statement to generate a count of each party by county, but
+    only among voters over the age of 60. The output should look like this:
+
+    party | county   | count
+    ------|----------|------
+    DEM   | ALACHUA  |   100
+    OTH   | ALACHUA  |   191
+    REP   | ALACHUA  |   182
+    DEM   | ORANGE   |   110
+    OTH   | ORANGE   |   441
+    REP   | ORANGE   |   341
+    DEM   | SEMINOLE |   898
+    OTH   | SEMINOLE |   999
+    REP   | SEMINOLE |   100
+
+    (The values in the "count" column above are for illustrative purposes only.)
+
+    There is no need to generate the actual counts; the SQL statement to
+    generate the above results will suffice.
